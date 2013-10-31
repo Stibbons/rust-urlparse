@@ -8,3 +8,5 @@ pub fn url_parse(url: &str) -> ~tuple_struct
     let s = tuple_struct(out, ~"", ~"");
     return ~s;
 }
+
+mod test_url_parse;

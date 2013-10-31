@@ -1,5 +1,5 @@
-
-use url_parse;
+use super::url_parse;
+use super::tuple_struct;
 
 #[test]
 fn test_url_parse()

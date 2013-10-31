@@ -8,4 +8,3 @@
 #[crate_type = "lib"];
 
 pub mod url_parser;
-pub mod tests;
