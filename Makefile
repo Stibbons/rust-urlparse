@@ -41,7 +41,7 @@ build/quicktests: $(lib_files)
 quickcheck: build/quicktests
 	build/quicktests --test
 
-check: all build/tests
+check: clean all build/tests
 	build/tests --test
 
 test:check
