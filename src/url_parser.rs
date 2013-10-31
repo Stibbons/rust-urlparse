@@ -1,5 +1,5 @@
 
-struct tuple_struct(~str, ~str, ~str);
+pub struct tuple_struct(~str, ~str, ~str);
 
 pub fn url_parse(url: &str) -> ~tuple_struct
 {
