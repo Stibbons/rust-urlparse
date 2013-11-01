@@ -790,6 +790,8 @@ fn test_get_path() {
 #[cfg(test)]
 mod tests {
 
+    use super::*;
+
     use std::hashmap::HashMap;
 
     #[test]
@@ -1036,5 +1038,35 @@ mod tests {
         assert_eq!(decode_component("%40"), ~"@");
         assert_eq!(decode_component("%5B"), ~"[");
         assert_eq!(decode_component("%5D"), ~"]");
+    }
+
+    #[test]
+    fn test_encode_form_urlencoded() {
+        let mut m = HashMap::new();
+        assert_eq!(encode_form_urlencoded(&m), ~"");
+
+        m.insert(~"", ~[]);
+        m.insert(~"foo", ~[]);
+        assert_eq!(encode_form_urlencoded(&m), ~"");
+
+        let mut m = HashMap::new();
+        m.insert(~"foo", ~[~"bar", ~"123"]);
+        assert_eq!(encode_form_urlencoded(&m), ~"foo=bar&foo=123");
+
+        let mut m = HashMap::new();
+        m.insert(~"foo bar", ~[~"abc", ~"12 = 34"]);
+        assert!(encode_form_urlencoded(&m) ==
+            ~"foo+bar=abc&foo+bar=12+%3D+34");
+    }
+
+    #[test]
+    fn test_decode_form_urlencoded() {
+        assert_eq!(decode_form_urlencoded([]).len(), 0);
+
+        let s = "a=1&foo+bar=abc&foo+bar=12+%3D+34".as_bytes();
+        let form = decode_form_urlencoded(s);
+        assert_eq!(form.len(), 2);
+        assert_eq!(form.get(&~"a"), &~[~"1"]);
+        assert_eq!(form.get(&~"foo bar"), &~[~"abc", ~"12 = 34"]);
     }
 }

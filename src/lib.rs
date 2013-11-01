@@ -7,4 +7,6 @@
 #[license = "Apache License"];
 #[crate_type = "lib"];
 
+extern mod extra;
+
 pub mod url_parser;
