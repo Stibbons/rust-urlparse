@@ -1,4 +1,4 @@
 
 mod url;
-pub mod urlparse;
+// pub mod urlparse;
 pub mod tests;
