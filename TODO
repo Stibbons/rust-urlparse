@@ -1,0 +1,24 @@
+Premier changement à faire dans Rust:
+- pourqioi le programme 'rust' a pas été créé sur ma machine virtuelle "mint" et "macos"
+- "extra" est installé dans /usr/local/libextra => je propose /usr/local/librustextra pour pas qu'il y ait
+  d'ambiguité (meme si le sha1 est là pour le nom unique)
+- libextra:
+    - Base64:
+         * use extra::base64::{ToBase64, STANDARD};
+         *
+         * fn main () {
+         *     let str = [52,32].to_base64(STANDARD);
+        Le champs STANDARD doit être par défaut
+    - url
+        doit fournir une fonction urlparse qui fait
+          url::from_str(url).unwrap()
+
+          comme ça si on inclue:
+            use extra::url::urlparse
+          on peut fait
+            let u = urlparse("http://toto/tata")
+        fournir un sous fonction à Url qui retourne la chaine modifiée
+           let u = urlparse("http://toto/tata/tutu.html?q=a");
+           u.query = ~"";
+           u.getUrl() // retourne "http://toto/tata/tutu.html"
+    - améliorer la documentation avec les fonctions importantes au début et des examples clair et précis
