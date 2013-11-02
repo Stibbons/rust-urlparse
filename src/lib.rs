@@ -9,4 +9,4 @@
 
 extern mod extra;
 
-pub mod url_parser;
+pub mod urlparse;

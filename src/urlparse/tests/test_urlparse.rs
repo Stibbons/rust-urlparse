@@ -1,5 +1,4 @@
 
-#[test]
 use super::super::urlparse::urlparse;
 
 #[test]

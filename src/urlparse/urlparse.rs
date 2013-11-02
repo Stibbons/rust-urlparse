@@ -1,8 +1,14 @@
 
 use extra::url;
 
-impl Url {
-    fn get() {
+trait Returnable
+{
+    fn get() -> ~str;
+}
+
+impl Returnable for url::Url
+{
+    fn get() -> ~str{
         return ~"";
     }
 }
