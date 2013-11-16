@@ -7,7 +7,7 @@
 #[license = "Apache License"];
 #[crate_type = "lib"];
 
-#[feature(macro_rules, globs, asm, managed_boxes)];
+#[feature(macro_rules, globs)];
 
 extern mod extra;
 
